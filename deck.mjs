@@ -2,7 +2,7 @@
 
 export class Deck{
   constructor(){
-    this.cards = buildDeck();
+    this.cards = this.buildDeck();
   }
 
   buildDeck(){
