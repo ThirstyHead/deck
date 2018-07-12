@@ -1,0 +1,19 @@
+{
+  "name": "deck",
+  "version": "0.1.0",
+  "description": "Deck of cards in ES6 module",
+  "main": "deck.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ThirstyHead/deck.git"
+  },
+  "author": "Scott Davis <scott@thirstyhead.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ThirstyHead/deck/issues"
+  },
+  "homepage": "https://github.com/ThirstyHead/deck#readme"
+}
