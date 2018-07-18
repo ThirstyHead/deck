@@ -42,6 +42,20 @@ tests.set("you cannot change an existing suite", () => {
   }
 });
 
+tests.set("it should have 13 ranks", () => {
+  return Object.keys(Card.RANKS).length === 13;
+});
+
+tests.set("RANKS.ACE has the highest rank", () => {
+  let result = false;
+  for(let r in Card.RANKS){
+    if(Card.RANKS[r] !== Card.RANKS.ACE){
+      result = Card.RANKS[r].rank < Card.RANKS.ACE.rank;
+    }
+  }
+  return result;
+});
+
 
 function test(){
   let results = [];
