@@ -27,10 +27,8 @@ tests.set("you cannot change the suites", () => {
 tests.set("you cannot add a new suite", () => {
   try{
     Card.SUITES.FOO = {name:'foo'};
-    return false; // due to expected error,
-                  // this line should never be reached
+    return false;
   }catch(error){
-    // console.log(error);
     return error.name === 'TypeError';
   }
 });
@@ -38,10 +36,8 @@ tests.set("you cannot add a new suite", () => {
 tests.set("you cannot change an existing suite", () => {
   try{
     Card.SUITES.HEARTS = {name:'foo'};
-    return false; // due to expected error,
-                  // this line should never be reached
+    return false;
   }catch(error){
-    // console.log(error);
     return error.name === 'TypeError';
   }
 });
