@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Cards Tests</title>
+
+    <style media="screen">
+      .pass{
+        color: green;
+      }
+
+      .fail{
+        background-color: red;
+      }
+
+      .dice-list{
+        font-size: 3em;
+      }
+    </style>
+
+    <script defer type="module">
+      import {test as deckTest} from './deck-test.mjs';
+      import {test as cardTest} from './card-test.mjs';
+
+      let htmlResults = document.querySelector('#results');
+      const results = [];
+      results.push({name:'Deck Tests', results:deckTest()});
+      results.push({name:'Card Tests', results:cardTest()});
+      results.forEach( (testSuite) => {
+        let h2 = document.createElement('h2');
+        h2.innerText = `${testSuite.name}`;
+        htmlResults.appendChild(h2);
+
+        let r = testSuite.results;
+        console.log(typeof r);
+        r.forEach( (result) => {
+          let li = document.createElement('li');
+          li.appendChild(document.createTextNode(result));
+          if(result.startsWith('[true]')){
+            li.classList.add('pass');
+          }else{
+            li.classList.add('fail');
+          }
+          htmlResults.appendChild(li);
+        })
+      });
+    </script>
+
+  </head>
+  <body>
+    <h1>Cards Tests</h1>
+    <ul id="results"></ul>
+  </body>
+</html>
