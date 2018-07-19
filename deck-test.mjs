@@ -56,6 +56,17 @@ tests.set("for..of iterates through entire deck", () => {
          counter === initialDeckSize;
 });
 
+tests.set("deck implements the spread operator", () => {
+  const d = new Deck();
+  const initialDeckSize = d.length;
+  const firstCard = d.deal();
+  const secondCard = d.deal();
+  const theRest = [...d];
+
+  return (initialDeckSize - 2) === theRest.length &&
+         d.length === 0;
+});
+
 
 
 function test(){
