@@ -20,6 +20,17 @@ tests.set("it should have a shuffle method", () => {
          });
 });
 
+tests.set("deck.deal() should remove the top card from deck.cards", () => {
+  const d = new Deck();
+  const initalDeckSize = d.cards.length;
+  const topCard = d.cards[0];
+  const dealtCard = d.deal();
+  const newDeckSize = d.cards.length;
+
+  return topCard === dealtCard &&
+         newDeckSize === (initalDeckSize - 1);
+});
+
 
 
 

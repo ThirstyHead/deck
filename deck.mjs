@@ -33,4 +33,8 @@ export class Deck{
     }
     return this.cards;
   }
+
+  deal(){
+    return this.cards.shift();
+  }
 }
