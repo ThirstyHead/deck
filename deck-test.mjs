@@ -31,7 +31,21 @@ tests.set("deck.deal() should remove the top card from deck.cards", () => {
          newDeckSize === (initalDeckSize - 1);
 });
 
+tests.set("deck.deal() can be used until deck is empty, then returns undefined", () => {
+  const d = new Deck();
+  let initialDeckSize = d.cards.length;
+  let counter = 0;
+  for(let i=0; i<initialDeckSize; i++){
+    const card = d.deal();
+    counter++;
+  }
 
+  // once deck is empty, deck.deal() should return undefined
+  const cardFromEmptyDeck = d.deal();
+
+  return counter === initialDeckSize &&
+         cardFromEmptyDeck === undefined;
+});
 
 
 function test(){
