@@ -48,6 +48,10 @@ export class Card{
     }
   }
 
+  toString(){
+    return `${RANKS[this.rank].name} of ${SUITES[this.suite].name}`
+  }
+
   static get SUITES(){
     return SUITES;
   }

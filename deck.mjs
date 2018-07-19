@@ -1,5 +1,7 @@
 'use strict';
 
+import {Card} from './card.mjs';
+
 export class Deck{
   constructor(){
     this.cards = this.buildDeck();
@@ -7,8 +9,10 @@ export class Deck{
 
   buildDeck(){
     let cards = [];
-    for(let i=0; i<52; i++){
-      cards.push(i);
+    for(let s in Card.SUITES){
+      for(let r in Card.RANKS){
+        cards.push(new Card(s,r));
+      }
     }
     return cards;
   }
