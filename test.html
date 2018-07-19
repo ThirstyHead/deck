@@ -28,11 +28,10 @@
       results.push({name:'Card Tests', results:cardTest()});
       results.forEach( (testSuite) => {
         let h2 = document.createElement('h2');
-        h2.innerText = `${testSuite.name}`;
+        h2.innerText = testSuite.name;
         htmlResults.appendChild(h2);
 
         let r = testSuite.results;
-        console.log(typeof r);
         r.forEach( (result) => {
           let li = document.createElement('li');
           li.appendChild(document.createTextNode(result));
