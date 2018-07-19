@@ -45,6 +45,18 @@ tests.set("deck.deal() can be used until deck is empty, then returns undefined",
          cardFromEmptyDeck === undefined;
 });
 
+tests.set("for..of iterates through entire deck", () => {
+  const d = new Deck();
+  const initialDeckSize = d.length;
+  let counter = 0;
+  for(let card of d){
+    counter++;
+  }
+  return d.length === 0 &&
+         counter === initialDeckSize;
+});
+
+
 
 function test(){
   let results = [];

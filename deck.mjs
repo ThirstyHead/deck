@@ -33,6 +33,12 @@ export class Deck{
     return privateDeck.shift();
   }
 
+  *[Symbol.iterator](){
+    while(privateDeck.length !== 0){
+      yield privateDeck.shift();
+    }
+  }
+
   static buildDeck(){
     let cards = [];
     for(let s in Card.SUITES){
