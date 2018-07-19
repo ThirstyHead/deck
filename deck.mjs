@@ -2,20 +2,16 @@
 
 import {Card} from './card.mjs';
 
+let privateDeck = [];
+
 export class Deck{
   constructor(){
-    this.cards = this.buildDeck();
+    privateDeck = Deck.buildDeck();
     this.shuffle();
   }
 
-  buildDeck(){
-    let cards = [];
-    for(let s in Card.SUITES){
-      for(let r in Card.RANKS){
-        cards.push(new Card(s,r));
-      }
-    }
-    return cards;
+  get length(){
+    return privateDeck.length
   }
 
   /**
@@ -23,18 +19,27 @@ export class Deck{
     * see https://bost.ocks.org/mike/shuffle/
     */
   shuffle(){
-    let counter = this.cards.length;
+    let counter = privateDeck.length;
     while (counter > 0) {
         let randomCardIndex = Math.floor(Math.random() * counter);
         counter--;
-        let thisCard = this.cards[counter];
-        this.cards[counter] = this.cards[randomCardIndex];
-        this.cards[randomCardIndex] = thisCard;
+        let thisCard = privateDeck[counter];
+        privateDeck[counter] = privateDeck[randomCardIndex];
+        privateDeck[randomCardIndex] = thisCard;
     }
-    return this.cards;
   }
 
   deal(){
-    return this.cards.shift();
+    return privateDeck.shift();
+  }
+
+  static buildDeck(){
+    let cards = [];
+    for(let s in Card.SUITES){
+      for(let r in Card.RANKS){
+        cards.push(new Card(s,r));
+      }
+    }
+    return cards;
   }
 }
