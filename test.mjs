@@ -1,6 +1,7 @@
 'use strict';
-import {test as deckTest} from './deck-test.mjs';
-import {test as cardTest} from './card-test.mjs';
+
+import {test as deckTest} from './components/deck/deck-test.mjs';
+import {test as cardTest} from './components/card/card-test.mjs';
 
 console.log('deck-test');
 console.log('='.repeat(9));

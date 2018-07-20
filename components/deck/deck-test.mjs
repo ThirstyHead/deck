@@ -1,6 +1,6 @@
 'use strict';
 
-import {Deck} from './deck.mjs';
+import {Deck} from '/components/deck/deck.mjs';
 export {tests, test};
 
 let tests = new Map();
