@@ -51,6 +51,7 @@
         transform: scale(-1, -1);
       }
 
+      /*********** HEARTS ***********/
       .hearts{
         color: red;
       }
@@ -68,6 +69,7 @@
         content: '\A\2665';
       }
 
+      /*********** SPADES ***********/
       .spades{
         color: black;
       }
@@ -85,9 +87,41 @@
         content: '\A\2660';
       }
 
+      /*********** CLUBS ***********/
+      .clubs{
+        color: black;
+      }
 
+      .clubs > header::after{
+        /* content: '&clubs;'; */
+        content: '\A\2663';
+      }
 
+      .clubs > .card-center::after{
+        content: '\2663';
+      }
 
+      .clubs > footer::after{
+        content: '\A\2663';
+      }
+
+      /*********** DIAMONDS ***********/
+      .diamonds{
+        color: red;
+      }
+
+      .diamonds > header::after{
+        /* content: '&diamonds;'; */
+        content: '\A\2666';
+      }
+
+      .diamonds > .card-center::after{
+        content: '\2666';
+      }
+
+      .diamonds > footer::after{
+        content: '\A\2666';
+      }
 
 
     </style>
@@ -114,16 +148,19 @@
           <footer>A</footer>
         </div>
 
-
-        <div class="card">
-          card
+        <div class="card clubs">
+          <header>K</header>
+          <div class="card-center"></div>
+          <footer>K</footer>
         </div>
       </section>
 
       <section class="player2">
         <h2>Player 2</h2>
-        <div class="card">
-          card
+        <div class="card diamonds">
+          <header>9</header>
+          <div class="card-center"></div>
+          <footer>9</footer>
         </div>
       </section>
     </main>
