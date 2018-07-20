@@ -1,6 +1,6 @@
 {
   "name": "deck",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Deck of cards in ES6 module",
   "main": "deck.js",
   "scripts": {
