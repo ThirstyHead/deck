@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>War (The Card Game)</title>
+
+    <style>
+      main{
+        display: flex;
+        text-align: center;
+      }
+
+      section{
+        border: 1px solid black;
+        padding: 1em;
+        flex-grow: 1;
+      }
+
+      #player1{
+        /* background-color: red; */
+        background-color: rgba(255, 0, 0, 0.25);
+      }
+
+      #player2{
+        /* background-color: blue; */
+        background-color: rgba(0, 0, 255, 0.25);
+      }
+
+      #battlefield{
+        /* background-color: green; */
+        background-color: rgba(0, 255, 0, 0.25);
+      }
+
+      #play{
+        display: flex;
+      }
+
+      #player1-play{
+        flex-grow: 1;
+      }
+
+      #player2-play{
+        flex-grow: 1;
+      }
+
+      .card{
+        border: 1px solid black;
+        padding: 0.5em;
+        width: 5em;
+        background-color: white;
+        margin: 0 auto;
+      }
+
+      .card > header{
+        font-size: 1em;
+        width: 1em;
+      }
+
+      .card > .card-center{
+        font-size: 3em;
+      }
+
+      .card > footer{
+        font-size: 1em;
+        width: 1em;
+        padding-right: 4em;
+        transform: scale(-1, -1);
+      }
+
+      /*********** HEARTS ***********/
+      .hearts{
+        color: red;
+      }
+
+      .hearts > header::after{
+        /* content: '&hearts;'; */
+        content: '\A\2665';
+      }
+
+      .hearts > .card-center::after{
+        content: '\2665';
+      }
+
+      .hearts > footer::after{
+        content: '\A\2665';
+      }
+
+      /*********** SPADES ***********/
+      .spades{
+        color: black;
+      }
+
+      .spades > header::after{
+        /* content: '&spades;'; */
+        content: '\A\2660';
+      }
+
+      .spades > .card-center::after{
+        content: '\2660';
+      }
+
+      .spades > footer::after{
+        content: '\A\2660';
+      }
+
+      /*********** CLUBS ***********/
+      .clubs{
+        color: black;
+      }
+
+      .clubs > header::after{
+        /* content: '&clubs;'; */
+        content: '\A\2663';
+      }
+
+      .clubs > .card-center::after{
+        content: '\2663';
+      }
+
+      .clubs > footer::after{
+        content: '\A\2663';
+      }
+
+      /*********** DIAMONDS ***********/
+      .diamonds{
+        color: red;
+      }
+
+      .diamonds > header::after{
+        /* content: '&diamonds;'; */
+        content: '\A\2666';
+      }
+
+      .diamonds > .card-center::after{
+        content: '\2666';
+      }
+
+      .diamonds > footer::after{
+        content: '\A\2666';
+      }
+    </style>
+  </head>
+  <body>
+    <h1>War (The Card Game)</h1>
+    <main>
+      <section id="player1">
+        <h2>Player 1</h2>
+        <div class="stack">
+          <div class="card hearts">
+            <header>5</header>
+            <div class="card-center"></div>
+            <footer>5</footer>
+          </div>
+        </div>
+      </section>
+
+      <section id="battlefield">
+        <h2>Battlefield</h2>
+        <div id="play">
+          <div id="player1-play">
+            <div class="card spades">
+              <header>A</header>
+              <div class="card-center"></div>
+              <footer>A</footer>
+            </div>
+          </div>
+
+          <div id="player2-play">
+            <div class="card clubs">
+              <header>K</header>
+              <div class="card-center"></div>
+              <footer>K</footer>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="player2">
+        <h2>Player 2</h2>
+        <div class="stack">
+          <div class="card diamonds">
+            <header>10</header>
+            <div class="card-center"></div>
+            <footer>10</footer>
+          </div>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>

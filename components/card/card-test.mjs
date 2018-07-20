@@ -1,6 +1,6 @@
 'use strict';
 
-import {Card} from './card.mjs';
+import {Card} from '/components/card/card.mjs';
 export {tests, test};
 
 let tests = new Map();
