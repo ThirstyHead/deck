@@ -16,14 +16,31 @@
         flex-grow: 1;
       }
 
-      .player1{
+      #player1{
         /* background-color: red; */
         background-color: rgba(255, 0, 0, 0.25);
       }
 
-      .player2{
+      #player2{
         /* background-color: blue; */
         background-color: rgba(0, 0, 255, 0.25);
+      }
+
+      #battlefield{
+        /* background-color: green; */
+        background-color: rgba(0, 255, 0, 0.25);
+      }
+
+      #play{
+        display: flex;
+      }
+
+      #player1-play{
+        flex-grow: 1;
+      }
+
+      #player2-play{
+        flex-grow: 1;
       }
 
       .card{
@@ -31,6 +48,7 @@
         padding: 0.5em;
         width: 5em;
         background-color: white;
+        margin: 0 auto;
       }
 
       .card > header{
@@ -120,50 +138,53 @@
       .diamonds > footer::after{
         content: '\A\2666';
       }
-
-
     </style>
   </head>
   <body>
     <h1>War (The Card Game)</h1>
-
-
     <main>
-      <section class="player1">
+      <section id="player1">
         <h2>Player 1</h2>
-        <div class="card hearts">
-          <header>5</header>
-          <div class="card-center"></div>
-          <footer>5</footer>
+        <div class="stack">
+          <div class="card hearts">
+            <header>5</header>
+            <div class="card-center"></div>
+            <footer>5</footer>
+          </div>
         </div>
       </section>
 
-      <section class="battlefield">
+      <section id="battlefield">
         <h2>Battlefield</h2>
-        <div class="card spades">
-          <header>A</header>
-          <div class="card-center"></div>
-          <footer>A</footer>
-        </div>
+        <div id="play">
+          <div id="player1-play">
+            <div class="card spades">
+              <header>A</header>
+              <div class="card-center"></div>
+              <footer>A</footer>
+            </div>
+          </div>
 
-        <div class="card clubs">
-          <header>K</header>
-          <div class="card-center"></div>
-          <footer>K</footer>
+          <div id="player2-play">
+            <div class="card clubs">
+              <header>K</header>
+              <div class="card-center"></div>
+              <footer>K</footer>
+            </div>
+          </div>
         </div>
       </section>
 
-      <section class="player2">
+      <section id="player2">
         <h2>Player 2</h2>
-        <div class="card diamonds">
-          <header>10</header>
-          <div class="card-center"></div>
-          <footer>10</footer>
+        <div class="stack">
+          <div class="card diamonds">
+            <header>10</header>
+            <div class="card-center"></div>
+            <footer>10</footer>
+          </div>
         </div>
       </section>
     </main>
-
-
-
   </body>
 </html>
