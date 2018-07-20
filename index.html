@@ -28,7 +28,7 @@
 
       .card{
         border: 1px solid black;
-        padding: 1em;
+        padding: 0.5em;
         width: 5em;
         background-color: white;
       }
@@ -47,8 +47,8 @@
         font-size: 1rem;
         width: 1em;
         letter-spacing: 2em;
-        padding-left: 4em;
-        transform: scale(1, -1);
+        padding-right: 4em;
+        transform: scale(-1, -1);
       }
 
       .hearts{
@@ -65,9 +65,29 @@
       }
 
       .hearts > footer::after{
-        /* content: '&hearts;'; */
         content: '\A\2665';
       }
+
+      .spades{
+        color: black;
+      }
+
+      .spades > header::after{
+        /* content: '&spades;'; */
+        content: '\A\2660';
+      }
+
+      .spades > .card-center::after{
+        content: '\2660';
+      }
+
+      .spades > footer::after{
+        content: '\A\2660';
+      }
+
+
+
+
 
 
     </style>
@@ -88,9 +108,13 @@
 
       <section class="battlefield">
         <h2>Battlefield</h2>
-        <div class="card">
-          card
+        <div class="card spades">
+          <header>A</header>
+          <div class="card-center"></div>
+          <footer>A</footer>
         </div>
+
+
         <div class="card">
           card
         </div>
