@@ -25,6 +25,51 @@
         /* background-color: blue; */
         background-color: rgba(0, 0, 255, 0.25);
       }
+
+      .card{
+        border: 1px solid black;
+        padding: 1em;
+        width: 5em;
+        background-color: white;
+      }
+
+      .card > header{
+        font-size: 1rem;
+        width: 1em;
+        letter-spacing: 2em;
+      }
+
+      .card > .card-center{
+        font-size: 3em;
+      }
+
+      .card > footer{
+        font-size: 1rem;
+        width: 1em;
+        letter-spacing: 2em;
+        padding-left: 4em;
+        transform: scale(1, -1);
+      }
+
+      .hearts{
+        color: red;
+      }
+
+      .hearts > header::after{
+        /* content: '&hearts;'; */
+        content: '\A\2665';
+      }
+
+      .hearts > .card-center::after{
+        content: '\2665';
+      }
+
+      .hearts > footer::after{
+        /* content: '&hearts;'; */
+        content: '\A\2665';
+      }
+
+
     </style>
   </head>
   <body>
@@ -34,14 +79,28 @@
     <main>
       <section class="player1">
         <h2>Player 1</h2>
+        <div class="card hearts">
+          <header>5</header>
+          <div class="card-center"></div>
+          <footer>5</footer>
+        </div>
       </section>
 
       <section class="battlefield">
         <h2>Battlefield</h2>
+        <div class="card">
+          card
+        </div>
+        <div class="card">
+          card
+        </div>
       </section>
 
       <section class="player2">
         <h2>Player 2</h2>
+        <div class="card">
+          card
+        </div>
       </section>
     </main>
 
