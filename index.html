@@ -44,7 +44,7 @@
       }
     </style>
 
-    <script src="components/card/index.mjs"></script>
+    <script src="components/card/index.mjs" type="module"></script>
   </head>
   <body>
     <h1>War (The Card Game)</h1>
@@ -52,7 +52,7 @@
       <section id="player1">
         <h2>Player 1</h2>
         <div class="stack">
-          <ttyw-card suite="DIAMONDS" rank="6"></ttyw-card>
+          <ttyw-card suite="DIAMONDS" rank="SIX"></ttyw-card>
         </div>
       </section>
 
@@ -60,11 +60,11 @@
         <h2>Battlefield</h2>
         <div id="play">
           <div id="player1-play">
-            <ttyw-card suite="SPADES" rank="A"></ttyw-card>
+            <ttyw-card suite="SPADES" rank="ACE"></ttyw-card>
           </div>
 
           <div id="player2-play">
-            <ttyw-card suite="HEARTS" rank="K"></ttyw-card>
+            <ttyw-card suite="HEARTS" rank="KING"></ttyw-card>
           </div>
         </div>
       </section>
@@ -72,7 +72,7 @@
       <section id="player2">
         <h2>Player 2</h2>
         <div class="stack">
-          <ttyw-card suite="CLUBS" rank="10"></ttyw-card>
+          <ttyw-card suite="CLUBS" rank="TEN"></ttyw-card>
         </div>
       </section>
     </main>
