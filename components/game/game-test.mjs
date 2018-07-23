@@ -23,6 +23,6 @@ tests.set("game.start() deals the cards to the players", () => {
   const game = new Game(p1, p2);
 
   game.start();
-  return p1.hand.cardCount === 26 &&
-         p2.hand.cardCount === 26;
+  return p1.hand.cardCount() === 26 &&
+         p2.hand.cardCount() === 26;
 });

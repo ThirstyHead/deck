@@ -12,11 +12,11 @@ export class Player{
           privateHand.push(card);
         },
 
-        play(){
+        play: function(){
           return privateHand.shift();
         },
 
-        get cardCount(){
+        cardCount: function(){
           return privateHand.length;
         }
       };
