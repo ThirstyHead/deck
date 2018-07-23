@@ -5,20 +5,21 @@ export {tests, test};
 
 let tests = new Map();
 
+function test(){
+  let results = [];
+  tests.forEach( (test, name) => {
+    results.push(`[${test()}] ${name}`);
+  });
+  return results;
+}
+
+
+/********** TESTS ***********/
+
 tests.set("it should have 52 cards by default", () => {
   const d = new Deck();
   return 52 === d.length;
 });
-
-// tests.set("it should have a shuffle method", () => {
-//   const d = new Deck();
-//   const originalOrder = [].concat(d.cards);
-//   d.shuffle();
-//   return 52 === d.cards.length &&
-//          d.cards.some( (thisCard, thisIndex) => {
-//            return originalOrder.indexOf(thisCard) !== thisIndex;
-//          });
-// });
 
 tests.set("deck.deal() should remove the top card from deck.cards", () => {
   const d = new Deck();
@@ -66,13 +67,3 @@ tests.set("deck implements the spread operator", () => {
   return (initialDeckSize - 2) === theRest.length &&
          d.length === 0;
 });
-
-
-
-function test(){
-  let results = [];
-  tests.forEach( (test, name) => {
-    results.push(`[${test()}] ${name}`);
-  });
-  return results;
-}

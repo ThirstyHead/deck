@@ -5,6 +5,16 @@ export {tests, test};
 
 let tests = new Map();
 
+function test(){
+  let results = [];
+  tests.forEach( (test, name) => {
+    results.push(`[${test()}] ${name}`);
+  });
+  return results;
+}
+
+/********** TESTS ***********/
+
 tests.set("it should have 4 suites", () => {
   return Object.keys(Card.SUITES).length === 4 &&
          Card.SUITES.hasOwnProperty('HEARTS') &&
@@ -106,14 +116,3 @@ tests.set("the card's rank is read-only after instantiation", () => {
     return result;
   }
 });
-
-
-
-
-function test(){
-  let results = [];
-  tests.forEach( (test, name) => {
-    results.push(`[${test()}] ${name}`);
-  });
-  return results;
-}

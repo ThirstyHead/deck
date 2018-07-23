@@ -22,12 +22,15 @@
       import {test as deckTest} from '/components/deck/deck-test.mjs';
       import {test as cardTest} from '/components/card/card-test.mjs';
       import {test as playerTest} from '/components/player/player-test.mjs';
+      import {test as gameTest} from '/components/game/game-test.mjs';
 
-      let htmlResults = document.querySelector('#results');
       const results = [];
       results.push({name:'Deck Tests', results:deckTest()});
       results.push({name:'Card Tests', results:cardTest()});
       results.push({name:'Player Tests', results:playerTest()});
+      results.push({name:'Game Tests', results:gameTest()});
+
+      let htmlResults = document.querySelector('#results');
       results.forEach( (testSuite) => {
         let h2 = document.createElement('h2');
         h2.innerText = testSuite.name;

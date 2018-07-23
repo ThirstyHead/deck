@@ -1,21 +1,25 @@
 'use strict';
 
-let hand = [];
+
 
 export class Player{
   constructor(name){
     this.name = name;
-  }
+    this.hand = (function(){
+      let privateHand = [];
+      return {
+        draw: function(card){
+          privateHand.push(card);
+        },
 
-  draw(card){
-    hand.push(card);
-  }
+        play(){
+          return privateHand.shift();
+        },
 
-  play(){
-    return hand.shift();
-  }
-
-  get cardCount(){
-    return hand.length;
+        get cardCount(){
+          return privateHand.length;
+        }
+      };
+    }());
   }
 }
