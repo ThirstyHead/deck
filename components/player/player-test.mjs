@@ -17,12 +17,12 @@ function test(){
 
 tests.set("player can draw() and play() cards", () => {
   const p = new Player('Suzi');
-  const initialCount = p.hand.cardCount();
+  const initialCount = p.hand.cardCount;
   p.hand.draw('card1');
   p.hand.draw('card2');
-  const cardCountAfterDrawing = p.hand.cardCount();
+  const cardCountAfterDrawing = p.hand.cardCount;
   const playedCard = p.hand.play();
-  const cardCountAfterPlaying = p.hand.cardCount();
+  const cardCountAfterPlaying = p.hand.cardCount;
 
   return 0 === initialCount &&
          2 === cardCountAfterDrawing &&
@@ -38,9 +38,9 @@ tests.set("new players have separate private decks", () => {
   p2.hand.draw('cardYYY');
   p2.hand.draw('cardZZZ');
 
-  return p1.hand.cardCount() === 1 &&
+  return p1.hand.cardCount === 1 &&
          p1.hand.play() === 'cardXXX' &&
-         p2.hand.cardCount() === 2 &&
+         p2.hand.cardCount === 2 &&
          p2.hand.play() === 'cardYYY' &&
          p2.hand.play() === 'cardZZZ';
 });

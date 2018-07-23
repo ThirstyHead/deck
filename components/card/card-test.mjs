@@ -65,7 +65,7 @@ tests.set("RANKS.ACE has the highest rank", () => {
   let result = false;
   for(let r in Card.RANKS){
     if(Card.RANKS[r] !== Card.RANKS.ACE){
-      result = Card.RANKS[r].rank < Card.RANKS.ACE.rank;
+      result = Card.RANKS[r].value < Card.RANKS.ACE.value;
     }
   }
   return result;

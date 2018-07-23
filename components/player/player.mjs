@@ -16,7 +16,7 @@ export class Player{
           return privateHand.shift();
         },
 
-        cardCount: function(){
+        get cardCount(){
           return privateHand.length;
         }
       };
