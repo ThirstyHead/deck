@@ -17,12 +17,12 @@ function test(){
 
 /********** TESTS **********/
 
-tests.set("game.new() shuffles the deck and deals the cards", () => {
+tests.set("game.start() deals the cards to the players", () => {
   const p1 = new Player('Suzi');
   const p2 = new Player('John');
   const game = new Game(p1, p2);
 
-  game.new();
+  game.start();
   return p1.hand.cardCount === 26 &&
          p2.hand.cardCount === 26;
 });

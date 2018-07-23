@@ -18,52 +18,30 @@ function test(){
 
 tests.set("it should have 52 cards by default", () => {
   const d = new Deck();
-  return 52 === d.length;
+  return 52 === d.cards.cardCount();
 });
 
 tests.set("deck.deal() should remove the top card from deck.cards", () => {
   const d = new Deck();
-  const initalDeckSize = d.length;
-  const dealtCard = d.deal();
-  const newDeckSize = d.length;
+  const initalDeckSize = d.cards.cardCount();
+  const dealtCard = d.cards.deal();
+  const newDeckSize = d.cards.cardCount();
 
   return newDeckSize === (initalDeckSize - 1);
 });
 
 tests.set("deck.deal() can be used until deck is empty, then returns undefined", () => {
   const d = new Deck();
-  let initialDeckSize = d.length;
+  let initialDeckSize = d.cards.cardCount();
   let counter = 0;
   for(let i=0; i<initialDeckSize; i++){
-    const card = d.deal();
+    const card = d.cards.deal();
     counter++;
   }
 
   // once deck is empty, deck.deal() should return undefined
-  const cardFromEmptyDeck = d.deal();
+  const cardFromEmptyDeck = d.cards.deal();
 
   return counter === initialDeckSize &&
          cardFromEmptyDeck === undefined;
-});
-
-tests.set("for..of iterates through entire deck", () => {
-  const d = new Deck();
-  const initialDeckSize = d.length;
-  let counter = 0;
-  for(let card of d){
-    counter++;
-  }
-  return d.length === 0 &&
-         counter === initialDeckSize;
-});
-
-tests.set("deck implements the spread operator", () => {
-  const d = new Deck();
-  const initialDeckSize = d.length;
-  const firstCard = d.deal();
-  const secondCard = d.deal();
-  const theRest = [...d];
-
-  return (initialDeckSize - 2) === theRest.length &&
-         d.length === 0;
 });

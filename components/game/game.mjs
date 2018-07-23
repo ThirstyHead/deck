@@ -6,22 +6,21 @@ export class Game{
   constructor(p1, p2){
     this.player1 = p1;
     this.player2 = p2;
-    this.deck = new Deck();
   }
 
-  new(){
-    this.deck.shuffle();
-    let counter = 0;
-    for(let card of this.deck){
-      if(counter % 2 === 0){
-        this.player1.hand.draw(card);
+  start(){
+    let deck = new Deck();
+    let currentPlayer = this.player1;
 
+    while(deck.cards.cardCount() > 0){
+      let card = deck.cards.deal();
+      currentPlayer.hand.draw(card);
+
+      if(currentPlayer === this.player1){
+        currentPlayer = this.player2;
       }else{
-        this.player2.hand.draw(card);
+        currentPlayer = this.player1;
       }
-      counter++;
     }
   }
-
-
 }

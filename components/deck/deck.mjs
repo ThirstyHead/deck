@@ -2,50 +2,47 @@
 
 import {Card} from '/components/card/card.mjs';
 
-let privateDeck = [];
-
+/**
+  * Uses Fisher-Yates shuffle algorithm
+  * see https://bost.ocks.org/mike/shuffle/
+  */
 export class Deck{
   constructor(){
-    privateDeck = Deck.buildDeck();
-    this.shuffle();
-  }
+    this.cards = (function(){
+      let privateDeck = [];
 
-  get length(){
-    return privateDeck.length
-  }
+      return{
+        buildDeck: function(){
+          privateDeck = [];
+          for(let s in Card.SUITES){
+            for(let r in Card.RANKS){
+              privateDeck.push(new Card(s,r));
+            }
+          }
+        },
 
-  /**
-    * Uses Fisher-Yates shuffle algorithm
-    * see https://bost.ocks.org/mike/shuffle/
-    */
-  shuffle(){
-    let counter = privateDeck.length;
-    while (counter > 0) {
-        let randomCardIndex = Math.floor(Math.random() * counter);
-        counter--;
-        let thisCard = privateDeck[counter];
-        privateDeck[counter] = privateDeck[randomCardIndex];
-        privateDeck[randomCardIndex] = thisCard;
-    }
-  }
+        cardCount: function(){
+          return privateDeck.length;
+        },
 
-  deal(){
-    return privateDeck.shift();
-  }
+        deal: function(){
+          return privateDeck.shift();
+        },
 
-  *[Symbol.iterator](){
-    while(privateDeck.length !== 0){
-      yield privateDeck.shift();
-    }
-  }
-
-  static buildDeck(){
-    let cards = [];
-    for(let s in Card.SUITES){
-      for(let r in Card.RANKS){
-        cards.push(new Card(s,r));
+        shuffle: function(){
+          let counter = privateDeck.length;
+          while (counter > 0) {
+              let randomCardIndex = Math.floor(Math.random() * counter);
+              counter--;
+              let thisCard = privateDeck[counter];
+              privateDeck[counter] = privateDeck[randomCardIndex];
+              privateDeck[randomCardIndex] = thisCard;
+          }
+        }
       }
-    }
-    return cards;
+    })();
+
+    this.cards.buildDeck();
+    this.cards.shuffle();
   }
 }
