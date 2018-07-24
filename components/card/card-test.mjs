@@ -116,3 +116,15 @@ tests.set("the card's rank is read-only after instantiation", () => {
     return result;
   }
 });
+
+tests.set("card.compare() uses card.value for simple comparison", () => {
+  const aceOfSpades = new Card('SPADES', 'ACE');
+  const kingOfHearts = new Card('HEARTS', 'KING');
+  const queenOfDiamonds = new Card('DIAMONDS', 'QUEEN');
+  const aceOfClubs = new Card('CLUBS', 'ACE');
+
+  return aceOfSpades.compare(kingOfHearts) > 0 &&
+         Card.compare(aceOfSpades, kingOfHearts) > 0 &&
+         queenOfDiamonds.compare(kingOfHearts) < 0 &&
+         aceOfSpades.compare(aceOfClubs) === 0;
+});

@@ -1,5 +1,3 @@
-'use strict';
-
 const SUITES = Object.freeze({
   SPADES   : {name:'spades', color:'black'},
   HEARTS   : {name:'hearts', color:'red'},
@@ -59,6 +57,10 @@ export class Card{
     return `${RANKS[this.rank].name} of ${SUITES[this.suite].name}`
   }
 
+  compare(otherCard){
+    return Card.compare(this, otherCard);
+  }
+
   get displaySuite(){
     return SUITES[this.suite].name;
   }
@@ -73,5 +75,9 @@ export class Card{
 
   static get RANKS(){
     return RANKS;
+  }
+
+  static compare(aCard, otherCard){
+    return aCard.value - otherCard.value;
   }
 }
