@@ -52,7 +52,8 @@ export class Game{
           round.winner = this.player2.name;
         }
 
-        if(this.roundsRemaining === 0){
+        if(round.winner === undefined &&
+           this.roundsRemaining === 0){
           round.winner = 'TIE';
         }
       }
