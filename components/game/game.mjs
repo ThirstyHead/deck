@@ -27,32 +27,41 @@ export class Game{
   }
 
   playRound(){
-    if( this.roundsRemaining > 0){
-      const card1 = this.player1.hand.play();
-      const card2 = this.player2.hand.play();
+    if(this.roundsRemaining > 0){
+      const round = {
+        number: this.history.length,
+        plays: [],
+        winner: undefined
+      };
 
-      let winner = undefined;
-      if(Card.compare(card1, card2) > 0){
-        winner = this.player1.name;
-      }else if(Card.compare(card2, card1) > 0){
-        winner = this.player2.name;
-      }else{
-        winner = 'TIE';
+      while(round.winner === undefined){
+        const play = {
+          number: round.plays.length
+        };
+        const card1 = this.player1.hand.play();
+        const card2 = this.player2.hand.play();
+        play[this.player1.name] = card1;
+        play[this.player2.name] = card2;
+        round.plays.push(Object.freeze(play));
+
+        if(Card.compare(card1, card2) > 0){
+          round.winner = this.player1.name;
+        }
+
+        if(Card.compare(card2, card1) > 0){
+          round.winner = this.player2.name;
+        }
+
+        if(this.roundsRemaining === 0){
+          round.winner = 'TIE';
+        }
       }
 
-      const round = {};
-      round[this.player1.name] = card1;
-      round[this.player2.name] = card2;
-      round.winner = winner;
-      round.round = this.history.length;
-      Object.freeze(round);
-
-      this.history.push(round);
+      this.history.push(Object.freeze(round));
+      return round;
     }else{
-      Object.freeze(this.history);
+      return null;
     }
-
-    return this.history;
   }
 
   get roundsRemaining(){

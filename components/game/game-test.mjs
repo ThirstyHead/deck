@@ -28,21 +28,20 @@ tests.set("game.start() deals the cards to the players", () => {
 tests.set("game.playRound() plays one card from each player and returns the winner", () => {
   const game = new Game('Suzi', 'John');
   game.start();
-  const results = game.playRound();
-  const firstResult = results[0];
-  const suziCard = firstResult['Suzi'];
-  const johnCard = firstResult['John'];
+  const round = game.playRound();
+  const finalPlay = round.plays[round.plays.length - 1];
+  const suziCard = finalPlay['Suzi'];
+  const johnCard = finalPlay['John'];
   let testWinner = undefined;
   if(Card.compare(suziCard, johnCard) > 0){
     testWinner = 'Suzi';
-  }else if(Card.compare(johnCard, suziCard) > 0){
-    testWinner = 'John';
-  }else{
-    testWinner = 'TIE';
   }
 
-  return results.length === 1 &&
-         testWinner === firstResult.winner;
+  if(Card.compare(johnCard, suziCard) > 0){
+    testWinner = 'John';
+  }
+
+  return testWinner === round.winner;
 });
 
 tests.set("game.scores returns the current scores", () => {
