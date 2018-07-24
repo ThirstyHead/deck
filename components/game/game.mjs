@@ -6,23 +6,18 @@ import {Player} from '/components/player/player.mjs';
 
 export class Game{
   constructor(name1, name2){
-    this.player1 = new Player(name1);
-    this.player2 = new Player(name2);
+    this.players = new Map();
+    this.players.set(name1, new Player(name1));
+    this.players.set(name2, new Player(name2));
     this.history = [];
   }
 
   start(){
     let deck = new Deck();
-    let currentPlayer = this.player1;
-
     while(deck.cards.cardCount > 0){
-      currentPlayer.hand.draw(deck.cards.deal());
-
-      if(currentPlayer === this.player1){
-        currentPlayer = this.player2;
-      }else{
-        currentPlayer = this.player1;
-      }
+      this.players.forEach( (currentPlayer) => {
+        currentPlayer.hand.draw(deck.cards.deal());
+      });
     }
   }
 
@@ -35,21 +30,22 @@ export class Game{
       };
 
       while(round.winner === undefined){
-        const play = {
-          number: round.plays.length
-        };
-        const card1 = this.player1.hand.play();
-        const card2 = this.player2.hand.play();
-        play[this.player1.name] = card1;
-        play[this.player2.name] = card2;
+        const [player1, player2] = this.players.values();
+
+        const card1 = player1.hand.play();
+        const card2 = player2.hand.play();
+        const play = {};
+        play[player1.name] = card1;
+        play[player2.name] = card2;
+        play.number = round.plays.length;
         round.plays.push(Object.freeze(play));
 
         if(Card.compare(card1, card2) > 0){
-          round.winner = this.player1.name;
+          round.winner = player1.name;
         }
 
         if(Card.compare(card2, card1) > 0){
-          round.winner = this.player2.name;
+          round.winner = player2.name;
         }
 
         if(round.winner === undefined &&
@@ -66,26 +62,24 @@ export class Game{
   }
 
   get roundsRemaining(){
-    return this.player1.hand.cardCount;
+    const [player1, player2] = this.players.values();
+    return player1.hand.cardCount;
   }
 
   get scores(){
-    const scores1 = this.history.filter( (it) => {
-      return it.winner === this.player1.name;
-    });
-
-    const scores2 = this.history.filter( (it) => {
-      return it.winner === this.player2.name;
+    let result = {};
+    this.players.forEach( (currentPlayer) => {
+      const scores = this.history.filter( (it) => {
+        return it.winner === currentPlayer.name;
+      });
+      result[currentPlayer.name] = scores;
     });
 
     const ties = this.history.filter( (it) => {
       return it.winner === 'TIE';
     });
-
-    let result = {};
-    result[this.player1.name] = scores1;
-    result[this.player2.name] = scores2;
     result['TIES'] = ties;
+
     return result;
   }
 }

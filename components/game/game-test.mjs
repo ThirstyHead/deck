@@ -21,8 +21,8 @@ function test(){
 tests.set("game.start() deals the cards to the players", () => {
   const game = new Game('Suzi', 'John');
   game.start();
-  return game.player1.hand.cardCount === 26 &&
-         game.player2.hand.cardCount === 26;
+  return game.players.get('Suzi').hand.cardCount === 26 &&
+         game.players.get('John').hand.cardCount === 26;
 });
 
 tests.set("game.playRound() plays one card from each player and returns the winner", () => {
