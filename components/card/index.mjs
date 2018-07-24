@@ -3,7 +3,10 @@ import {Card} from '/components/card/card.mjs';
 class TtywCard extends HTMLElement{
   constructor(){
     super();
-    this.card = new Card(this.suite, this.rank);
+    this.card = undefined;
+    if(this.side !== 'back'){
+      this.card = new Card(this.suite, this.rank);
+    }
   }
 
   connectedCallback(){
@@ -110,6 +113,38 @@ class TtywCard extends HTMLElement{
       .diamonds > footer::after{
         content: '\\A\\2666';
       }
+
+      /*********** CARD BACK ***********/
+      .card-back{
+        background: repeating-linear-gradient(
+                      45deg,
+                      #606dbc,
+                      #606dbc 10px,
+                      #465298 10px,
+                      #465298 20px
+                    );
+      }
+
+      .card-back > header{
+        opacity: 0;
+      }
+
+      .card-back > header::after{
+        /* content: '&nbsp;'; */
+        content: '\\A\\00A0';
+      }
+
+      .card-back > .card-center::after{
+        content: '\\00A0';
+      }
+
+      .card-back > footer{
+        opacity: 0;
+      }
+
+      .card-back > footer::after{
+        content: '\\A\\00A0';
+      }
     `;
 
     return styleBlock;
@@ -118,12 +153,21 @@ class TtywCard extends HTMLElement{
   get bodyBlock(){
     let bodyBlock = document.createElement('div');
     bodyBlock.classList.add('card');
-    bodyBlock.classList.add(this.card.displaySuite);
-    bodyBlock.innerHTML = `
-      <header>${this.card.displayRank}</header>
-      <div class="card-center"></div>
-      <footer>${this.card.displayRank}</footer>
-    `;
+    if(this.side === 'back'){
+      bodyBlock.classList.add('card-back');
+      bodyBlock.innerHTML = `
+        <header>X</header>
+        <div class="card-center"></div>
+        <footer>X</footer>
+      `;
+    }else{
+      bodyBlock.classList.add(this.card.displaySuite);
+      bodyBlock.innerHTML = `
+        <header>${this.card.displayRank}</header>
+        <div class="card-center"></div>
+        <footer>${this.card.displayRank}</footer>
+      `;
+    }
 
     return bodyBlock;
   }
@@ -143,6 +187,15 @@ class TtywCard extends HTMLElement{
   set rank(value){
     this.setAttribute('rank', value);
   }
+
+  get side(){
+    return this.getAttribute('side');
+  }
+
+  set side(value){
+    this.setAttribute('side', value);
+  }
+
 
 }
 
