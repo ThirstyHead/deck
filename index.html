@@ -49,7 +49,9 @@
     <script src="components/card/index.mjs" type="module"></script>
     <script src="components/stack/index.mjs" type="module"></script>
 
-    <script defer>
+    <script defer type="module">
+      import {Game} from '/components/game/game.mjs';
+
       window.addEventListener('load', init);
 
       function init(){
@@ -58,6 +60,9 @@
 
         document.querySelector('#player2-stack')
                 .addEventListener('click', play);
+
+        document.querySelector('button[name="newGame"]')
+                .addEventListener('click', newGame);
       }
 
       function play(event){
@@ -67,20 +72,28 @@
         playTarget.innerHTML = '<ttyw-card suite="SPADES" rank="QUEEN"></ttyw-card>';
       }
 
+      function newGame(){
+        let player1name = document.querySelector('#player1-name').innerText;
+        let player2name = document.querySelector('#player2-name').innerText;
+
+        window.game = new Game(player1name, player2name);
+        window.game.start();
+      }
+
     </script>
   </head>
   <body>
     <h1>War (The Card Game)</h1>
     <main>
       <section id="player1">
-        <h2 contenteditable="true">Player 1</h2>
+        <h2 contenteditable="true" id="player1-name">Player 1</h2>
         <p>(Click to edit)</p>
         <ttyw-stack size="26" id="player1-stack"></ttyw-stack>
       </section>
 
       <section id="battlefield">
         <h2>Battlefield</h2>
-        <p><button>New Game</button></p>
+        <p><button name="newGame">New Game</button></p>
         <div id="play">
           <div id="player1-play">
             <ttyw-card suite="SPADES" rank="ACE"></ttyw-card>
@@ -93,7 +106,7 @@
       </section>
 
       <section id="player2">
-        <h2 contenteditable="true">Player 2</h2>
+        <h2 contenteditable="true" id="player2-name">Player 2</h2>
         <p>(Click to edit)</p>
         <ttyw-stack size="26" id="player2-stack"></ttyw-stack>
       </section>
