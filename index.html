@@ -48,13 +48,33 @@
 
     <script src="components/card/index.mjs" type="module"></script>
     <script src="components/stack/index.mjs" type="module"></script>
+
+    <script defer>
+      window.addEventListener('load', init);
+
+      function init(){
+        document.querySelector('#player1-stack')
+                .addEventListener('click', play);
+
+        document.querySelector('#player2-stack')
+                .addEventListener('click', play);
+      }
+
+      function play(event){
+        let clickTarget = event.target.id;
+        let newTarget = clickTarget.replace('stack', 'play');
+        let playTarget = document.querySelector(`#${newTarget}`);
+        playTarget.innerHTML = '<ttyw-card suite="SPADES" rank="QUEEN"></ttyw-card>';
+      }
+
+    </script>
   </head>
   <body>
     <h1>War (The Card Game)</h1>
     <main>
       <section id="player1">
         <h2>Player 1</h2>
-        <ttyw-stack size='26'></ttyw-stack>
+        <ttyw-stack size="26" id="player1-stack"></ttyw-stack>
       </section>
 
       <section id="battlefield">
@@ -72,7 +92,7 @@
 
       <section id="player2">
         <h2>Player 2</h2>
-        <ttyw-stack size='26'></ttyw-stack>
+        <ttyw-stack size="26" id="player2-stack"></ttyw-stack>
       </section>
     </main>
   </body>
