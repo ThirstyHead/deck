@@ -21,7 +21,7 @@ export class Deck{
           }
         },
 
-        cardCount: function(){
+        get cardCount(){
           return privateDeck.length;
         },
 

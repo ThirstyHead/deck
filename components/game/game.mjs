@@ -15,7 +15,7 @@ export class Game{
     let deck = new Deck();
     let currentPlayer = this.player1;
 
-    while(deck.cards.cardCount() > 0){
+    while(deck.cards.cardCount > 0){
       currentPlayer.hand.draw(deck.cards.deal());
 
       if(currentPlayer === this.player1){
