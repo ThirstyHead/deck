@@ -128,3 +128,18 @@ tests.set("card.compare() uses card.value for simple comparison", () => {
          queenOfDiamonds.compare(kingOfHearts) < 0 &&
          aceOfSpades.compare(aceOfClubs) === 0;
 });
+
+tests.set("An array of Cards will be sorted by card.value, ignoring card.suite", () => {
+  const cards = [];
+  cards.push(new Card('SPADES', 'ACE'));
+  cards.push(new Card('HEARTS', 'KING'));
+  cards.push(new Card('DIAMONDS', 'QUEEN'));
+  cards.push(new Card('CLUBS', 'ACE'));
+
+  cards.sort(Card.sort);
+
+  return cards[0].rank === 'ACE' &&
+         cards[1].rank === 'ACE' &&
+         cards[2].rank === 'KING' &&
+         cards[3].rank === 'QUEEN';
+});

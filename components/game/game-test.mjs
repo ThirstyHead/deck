@@ -1,6 +1,7 @@
 'use strict';
 
 import {Game} from '/components/game/game.mjs';
+import {Card} from '/components/card/card.mjs';
 import {Player} from '/components/player/player.mjs';
 
 export {tests, test};
@@ -32,15 +33,11 @@ tests.set("game.playRound() plays one card from each player and returns the winn
   const suziCard = firstResult['Suzi'];
   const johnCard = firstResult['John'];
   let testWinner = undefined;
-  if(suziCard.value > johnCard.value){
+  if(Card.compare(suziCard, johnCard) > 0){
     testWinner = 'Suzi';
-  }
-
-  if(johnCard.value > suziCard.value){
+  }else if(Card.compare(johnCard, suziCard) > 0){
     testWinner = 'John';
-  }
-
-  if(suziCard.value === johnCard.value){
+  }else{
     testWinner = 'TIE';
   }
 

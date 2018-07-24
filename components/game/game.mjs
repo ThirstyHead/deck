@@ -1,6 +1,7 @@
 'use strict';
 
 import {Deck} from '/components/deck/deck.mjs';
+import {Card} from '/components/card/card.mjs';
 import {Player} from '/components/player/player.mjs';
 
 export class Game{
@@ -29,18 +30,14 @@ export class Game{
     if( this.roundsRemaining > 0){
       const card1 = this.player1.hand.play();
       const card2 = this.player2.hand.play();
+
       let winner = undefined;
-
-      if(card1.value > card2.value){
+      if(Card.compare(card1, card2) > 0){
         winner = this.player1.name;
-      }
-
-      if(card1.value < card2.value){
+      }else if(Card.compare(card2, card1) > 0){
         winner = this.player2.name;
-      }
-
-      if(card1.value === card2.value){
-        winner = "TIE";
+      }else{
+        winner = 'TIE';
       }
 
       const round = {};
