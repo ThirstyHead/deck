@@ -13,22 +13,24 @@
       section{
         border: 1px solid black;
         padding: 1em;
-        flex-grow: 1;
       }
 
       #player1{
         /* background-color: red; */
         background-color: rgba(255, 0, 0, 0.25);
+        flex-grow: 2;
       }
 
       #player2{
         /* background-color: blue; */
         background-color: rgba(0, 0, 255, 0.25);
+        flex-grow: 2;
       }
 
       #battlefield{
         /* background-color: green; */
         background-color: rgba(0, 255, 0, 0.25);
+        flex-grow: 1;
       }
 
       #play{
@@ -42,6 +44,13 @@
       #player2-play{
         flex-grow: 1;
       }
+
+      .stack li{
+        list-style-type: none;
+        display: inline-block;
+        margin-left: -6em;
+      }
+
     </style>
 
     <script src="components/card/index.mjs" type="module"></script>
@@ -52,7 +61,34 @@
       <section id="player1">
         <h2>Player 1</h2>
         <div class="stack">
-          <ttyw-card side="back"></ttyw-card>
+          <ul>
+            <li><ttyw-card side="back"></ttyw-card></li>
+            <li><ttyw-card side="back"></ttyw-card></li>
+            <li><ttyw-card side="back"></ttyw-card></li>
+            <li><ttyw-card side="back"></ttyw-card></li>
+            <li><ttyw-card side="back"></ttyw-card></li>
+            <li><ttyw-card side="back"></ttyw-card></li>
+            <li><ttyw-card side="back"></ttyw-card></li>
+            <li><ttyw-card side="back"></ttyw-card></li>
+            <li><ttyw-card side="back"></ttyw-card></li>
+            <li><ttyw-card side="back"></ttyw-card></li>
+            <li><ttyw-card side="back"></ttyw-card></li>
+            <li><ttyw-card side="back"></ttyw-card></li>
+            <li><ttyw-card side="back"></ttyw-card></li>
+            <li><ttyw-card side="back"></ttyw-card></li>
+            <li><ttyw-card side="back"></ttyw-card></li>
+            <li><ttyw-card side="back"></ttyw-card></li>
+            <li><ttyw-card side="back"></ttyw-card></li>
+            <li><ttyw-card side="back"></ttyw-card></li>
+            <li><ttyw-card side="back"></ttyw-card></li>
+            <li><ttyw-card side="back"></ttyw-card></li>
+            <li><ttyw-card side="back"></ttyw-card></li>
+            <li><ttyw-card side="back"></ttyw-card></li>
+            <li><ttyw-card side="back"></ttyw-card></li>
+            <li><ttyw-card side="back"></ttyw-card></li>
+            <li><ttyw-card side="back"></ttyw-card></li>
+            <li><ttyw-card side="back"></ttyw-card></li>
+          </ul>
         </div>
       </section>
 
@@ -72,7 +108,34 @@
       <section id="player2">
         <h2>Player 2</h2>
         <div class="stack">
-          <ttyw-card suite="CLUBS" rank="TEN"></ttyw-card>
+          <ul>
+            <li><ttyw-card side="back"></ttyw-card></li>
+            <li><ttyw-card side="back"></ttyw-card></li>
+            <li><ttyw-card side="back"></ttyw-card></li>
+            <li><ttyw-card side="back"></ttyw-card></li>
+            <li><ttyw-card side="back"></ttyw-card></li>
+            <li><ttyw-card side="back"></ttyw-card></li>
+            <li><ttyw-card side="back"></ttyw-card></li>
+            <li><ttyw-card side="back"></ttyw-card></li>
+            <li><ttyw-card side="back"></ttyw-card></li>
+            <li><ttyw-card side="back"></ttyw-card></li>
+            <li><ttyw-card side="back"></ttyw-card></li>
+            <li><ttyw-card side="back"></ttyw-card></li>
+            <li><ttyw-card side="back"></ttyw-card></li>
+            <li><ttyw-card side="back"></ttyw-card></li>
+            <li><ttyw-card side="back"></ttyw-card></li>
+            <li><ttyw-card side="back"></ttyw-card></li>
+            <li><ttyw-card side="back"></ttyw-card></li>
+            <li><ttyw-card side="back"></ttyw-card></li>
+            <li><ttyw-card side="back"></ttyw-card></li>
+            <li><ttyw-card side="back"></ttyw-card></li>
+            <li><ttyw-card side="back"></ttyw-card></li>
+            <li><ttyw-card side="back"></ttyw-card></li>
+            <li><ttyw-card side="back"></ttyw-card></li>
+            <li><ttyw-card side="back"></ttyw-card></li>
+            <li><ttyw-card side="back"></ttyw-card></li>
+            <li><ttyw-card side="back"></ttyw-card></li>
+          </ul>
         </div>
       </section>
     </main>
