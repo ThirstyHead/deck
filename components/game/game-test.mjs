@@ -1,5 +1,3 @@
-'use strict';
-
 import {Game} from '/components/game/game.mjs';
 import {Card} from '/components/card/card.mjs';
 import {Player} from '/components/player/player.mjs';

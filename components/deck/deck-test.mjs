@@ -1,5 +1,3 @@
-'use strict';
-
 import {Deck} from '/components/deck/deck.mjs';
 export {tests, test};
 

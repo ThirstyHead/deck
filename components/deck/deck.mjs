@@ -1,5 +1,3 @@
-'use strict';
-
 import {Card} from '/components/card/card.mjs';
 
 /**

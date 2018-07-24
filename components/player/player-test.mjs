@@ -1,5 +1,3 @@
-'use strict';
-
 import {Player} from '/components/player/player.mjs';
 export {tests, test};
 
